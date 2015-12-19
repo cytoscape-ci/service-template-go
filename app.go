@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"os"
-	builder "github.com/cytoscape-ci/service-go/servicebuilder"
+	builder "github.com/keiono/label-generator/servicebuilder"
 	"net"
 	"strconv"
 	"flag"

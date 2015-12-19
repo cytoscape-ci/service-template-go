@@ -17,9 +17,9 @@ type Status struct {
 func StatusHandler(w http.ResponseWriter, r *http.Request) {
 
 	serviceStatus := Status{
-		Name:"Gene ID Mapping service",
+		Name:"CX Converter",
 		Version:"v1",
-		Description:"Converts list of IDs into other types of IDs.",
+		Description:"Converts CX stream into other formats.",
 		Documents: "https://github.com/cytoscape-ci/service-go",
 	}
 

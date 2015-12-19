@@ -3,7 +3,7 @@ package servicebuilder
 import (
 	"net/http"
 	"log"
-	req "github.com/cytoscape-ci/service-go/requesthandlers"
+	req "github.com/keiono/label-generator/requesthandlers"
 	"github.com/rs/cors"
 	"strconv"
 )
@@ -13,7 +13,7 @@ func StartServer(portNumber int) (err error) {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", req.StatusHandler)
-	mux.HandleFunc("/map", req.IdMappingHandler)
+	mux.HandleFunc("/converter/cx2cyjs", req.Cx2CyjsHandler)
 
 	handler := cors.Default().Handler(mux)
 
