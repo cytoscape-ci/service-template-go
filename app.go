@@ -3,13 +3,11 @@ package main
 import (
 	"log"
 	"os"
-	builder "github.com/keiono/label-generator/servicebuilder"
 	"net"
 	"strconv"
 	"flag"
+	builder "github.com/cytoscape-ci/service-cx/servicebuilder"
 )
-
-
 
 func buildReg() (reg *builder.Registration, agent *string, port *int) {
 	// This is required!

@@ -15,7 +15,6 @@ type Status struct {
 
 
 func StatusHandler(w http.ResponseWriter, r *http.Request) {
-
 	serviceStatus := Status{
 		Name:"CX Converter",
 		Version:"v1",
