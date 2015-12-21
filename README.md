@@ -4,7 +4,7 @@
 
 ## What's this?
 
-This is a microservice to convert CX stream into other formats.
+This is a Go microservice to convert CX stream into other formats.
 
 
 (TBD)

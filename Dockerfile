@@ -10,6 +10,7 @@ WORKDIR /go/src/github.com/cytoscape-ci/service-cx
 # Install Go dependencies
 RUN go get github.com/rs/cors
 RUN go get github.com/cytoscape-ci/cxtool
+RUN go get github.com/cytoscape-ci/elsa-client
 
 # Build the server for this environment
 RUN go build app.go
