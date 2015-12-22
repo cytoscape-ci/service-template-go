@@ -5,12 +5,25 @@ import (
 	"os"
 	"flag"
 	elsa "github.com/cytoscape-ci/elsa-client"
-	handlers "github.com/cytoscape-ci/service-cx/requesthandlers"
+	handlers "github.com/keiono/service-cx/requesthandlers"
 	"strconv"
 )
 
 
 func main() {
+
+	p := register()
+
+	// Start API server
+	serverErr := handlers.StartServer(p)
+	if serverErr!= nil {
+		log.Fatal("Could not start API server: ", serverErr.Error())
+		os.Exit(1)
+	}
+}
+
+
+func register() int {
 	reg := elsa.NewRegistrationFromCommandline()
 
 	elsaLocation := flag.String("agent", "http://192.168.99.100:8080/registration", "Agent URL")
@@ -34,11 +47,5 @@ func main() {
 	// Asynchronously register this service to Submit Agent
 	go elsa.RegisterService(*elsaLocation, reg, elsa.RetrySetting{})
 
-	// Start API server
-	serverErr := handlers.StartServer(servicePort)
-
-	if serverErr!= nil {
-		log.Fatal("Could not start API server: ", serverErr.Error())
-		os.Exit(1)
-	}
+	return servicePort
 }

@@ -8,10 +8,12 @@ import (
 	"log"
 )
 
+
 const (
 	GET = "GET"
 	POST = "POST"
 )
+
 
 type ErrorMessage struct {
 	Code    int `json:"code"`
@@ -19,13 +21,13 @@ type ErrorMessage struct {
 	Error   string `json:"error,omitempty"`
 }
 
-func unsupported(w http.ResponseWriter, r *http.Request) {
+
+func unsupported(w http.ResponseWriter, r *http.Request, expected string) {
 	code := 405
-	res := getErrorMsg(code, "You need to POST your data to use this service.",
+	res := getErrorMsg(code, "You need to use " + expected,
 		errors.New("Invalid HTTP method used: " + r.Method))
 
 	log.Println("Unsupported method call from: ", r.RemoteAddr)
-
 	http.Error(w, res, code)
 }
 
@@ -44,7 +46,5 @@ func getErrorMsg(code int, msg string, err error) (jsonMsg string) {
 	if err != nil {
 		// TODO: What should I return?
 	}
-
 	return string(result)
 }
-

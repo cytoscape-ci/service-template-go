@@ -4,12 +4,11 @@ FROM golang:1.5.2
 WORKDIR /go
 
 # This is the default GOPATH for this container.
-ADD . /go/src/github.com/cytoscape-ci/service-cx
-WORKDIR /go/src/github.com/cytoscape-ci/service-cx
+ADD . /go/src/github.com/cytoscape-ci/service-template-go
+WORKDIR /go/src/github.com/cytoscape-ci/service-template-go
 
 # Install Go dependencies
 RUN go get github.com/rs/cors
-RUN go get github.com/cytoscape-ci/cxtool
 RUN go get github.com/cytoscape-ci/elsa-client
 
 # Build the server for this environment
@@ -18,4 +17,4 @@ RUN go build app.go
 EXPOSE 3000
 
 # Run it!
-CMD ./app -id=cxtool
+CMD ./app -id=echo

@@ -1,5 +1,6 @@
 package handlers
 
+
 import (
 	"net/http"
 	"log"
@@ -13,8 +14,10 @@ func StartServer(port int) error {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", StatusHandler)
-	mux.HandleFunc("/converter/cx2cyjs", Cx2CyjsHandler)
-	mux.HandleFunc("/converter/cx2sif", Cx2SifHandler)
+	mux.HandleFunc("/echo", EchoHandler)
+
+	// Add your service endpoints here...
+
 
 	handler := cors.Default().Handler(mux)
 
